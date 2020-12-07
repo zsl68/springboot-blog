@@ -10,7 +10,7 @@
         <result column="head_portrait" property="headPortrait"/>
         <result column="iphone" property=""/>
         <result column="email" property="email"></result>
-        <association property="test" javaType="com.zsl.blog.model.Test" >
+        <association property="test" javaType="com.zsl.blog.model.Tag" >
             <id property="id" column="id"/>
             <result property="name" column="name"/>
         </association>
