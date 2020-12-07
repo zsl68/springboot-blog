@@ -1,0 +1,33 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zsl.blog.mapper.UserMapper">
+
+    <resultMap id="userMap" type="com.zsl.blog.model.User">
+        <id column="userId" property="userId"></id>
+        <result column="userName" property="userName"/>
+        <result column="password" property="password"/>
+        <result column="head_portrait" property="headPortrait"/>
+        <result column="iphone" property=""/>
+        <result column="email" property="email"></result>
+        <association property="test" javaType="com.zsl.blog.model.Test" >
+            <id property="id" column="id"/>
+            <result property="name" column="name"/>
+        </association>
+    </resultMap>
+
+       <select id="queryDemo" resultMap="userMap">
+           select bs.* from blog_user bu left join blog_test bs on bu.userId = bs.id
+       </select>
+
+
+       <update id="updateUser" parameterType="com.zsl.blog.model.User" >
+           update blog_user
+           <trim prefix="set" prefixOverrides=",">
+               <if test="name != null and name != ''">
+                  username = #{username}
+               </if>
+                  password = #{password}
+           </trim>
+       </update>
+</mapper>
