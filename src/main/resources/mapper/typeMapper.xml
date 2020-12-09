@@ -1,0 +1,12 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zsl.blog.mapper.TypeMapper">
+
+    <select id="findTypeCount" resultType="java.util.Map">
+      select
+      t.name as typeName,
+      count(b.type_id) as typeCount
+      from t_type t left join t_blog b on t.id = b.type_id group by t.id
+    </select>
+</mapper>
