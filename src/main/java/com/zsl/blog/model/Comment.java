@@ -24,7 +24,7 @@ import java.util.List;
 @TableName("t_tag")
 public class Comment {
 
-    @TableId(type = IdType.AUTO)
+    @TableId
     private String id;
 
     private String nickname;

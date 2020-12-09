@@ -4,16 +4,12 @@
 <mapper namespace="com.zsl.blog.mapper.UserMapper">
 
     <resultMap id="userMap" type="com.zsl.blog.model.User">
-        <id column="userId" property="userId"></id>
+        <id column="id" property="userId"></id>
         <result column="userName" property="userName"/>
         <result column="password" property="password"/>
         <result column="head_portrait" property="headPortrait"/>
         <result column="iphone" property=""/>
         <result column="email" property="email"></result>
-        <association property="test" javaType="com.zsl.blog.model.Tag" >
-            <id property="id" column="id"/>
-            <result property="name" column="name"/>
-        </association>
     </resultMap>
 
        <select id="queryDemo" resultMap="userMap">

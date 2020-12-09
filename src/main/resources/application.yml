@@ -4,13 +4,20 @@ server:
     context-path: /
 
 spring:
-  thymeleaf:
-    mode: HTML
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/personalblogs?useUnicode=true&characterEncoding=UTF-8& serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/personalblogs?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
     username: root
     password: root
+    hikari:
+      max-lifetime: 500000
+  devtools:
+      restart:
+        enabled: true  #设置开启热部署
+        additional-paths: src/main/java #重启目录
+        exclude: WEB-INF/**
+  freemarker:
+    cache: false    #页面不加载缓存，修改即时生效
 
 mybatis-plus:
   configuration:
@@ -21,7 +28,13 @@ mybatis-plus:
   global-config:
     # 逻辑删除配置
     db-config:
+      id-type: uuid
       # 删除前
-      logic-not-delete-value: 0
+      logic-not-delete-value: 1
       # 删除后
-      logic-delete-value: 1
+      logic-delete-value: 0
+logging:
+  level:
+    root: info
+    com.imcoding: debug
+  file: log/imcoding.log

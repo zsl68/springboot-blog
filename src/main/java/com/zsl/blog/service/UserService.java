@@ -12,7 +12,7 @@ import com.zsl.blog.model.User;
 public interface UserService extends IService<User> {
 
 
-    User getUserByName(String name);
+    User getUser(String name);
 
     User queryDemo();
 }

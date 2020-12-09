@@ -25,7 +25,7 @@ import java.util.List;
 @TableName("t_user")
 public class User {
 
-    @TableId(type= IdType.AUTO)
+    @TableId(value = "id")
     private String userId;
 
     private String username;
@@ -40,16 +40,20 @@ public class User {
 
     private String password;
 
-    private List<Blog> blogs = Lists.newArrayList();
+    @TableField("type_id")
+    private String typeId;
 
-    @TableField("head_portrait")
-    private String headPortrait;
+    @TableField(exist = false)
+    private List<Blog> blogs = Lists.newArrayList();
 
     /*创建时间*/
     @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+    @TableField("create_time")
     private Date createTime;
 
     /*修改时间*/
     @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+    @TableField("update_time")
     private Date updateTime;
+
 }

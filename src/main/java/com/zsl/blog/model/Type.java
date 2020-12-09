@@ -1,12 +1,11 @@
 package com.zsl.blog.model;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -21,10 +20,11 @@ import java.util.List;
 @TableName("t_type")
 public class Type {
 
-    @TableId(type = IdType.AUTO)
+    @TableId
     private String id;
 
     private String name;
 
+    @TableField(exist = false)
     private List<Blog> blogs;
 }

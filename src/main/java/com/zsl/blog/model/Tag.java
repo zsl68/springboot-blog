@@ -22,7 +22,7 @@ import java.util.List;
 @TableName("t_tag")
 public class Tag {
 
-    @TableId(type = IdType.AUTO)
+    @TableId
     private String id;
 
     private String name;
